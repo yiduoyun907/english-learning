@@ -1,0 +1,36 @@
+# 运行时数据与数据库
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# 词库原始数据（体积大，不入库）
+data/*.csv
+data/*.zip
+data/*.7z
+
+# 环境变量（含凭证，绝不提交）
+.env
+.env.local
+
+# 日志
+*.log
+npm-debug.log*
+
+# 编辑器与系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# 设计过程稿，仅本地保留
+docs/design/
+
+# AI 助手的工作约定，不随项目分发
+CLAUDE.md
+
+# Playwright MCP 的临时输出
+.playwright-mcp/

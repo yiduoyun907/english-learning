@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>听写 · 英语学习</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <main class="container">
+    <div class="row-between" style="margin-bottom:12px;">
+      <a class="btn btn-ghost btn-sm" href="/listening.html">返回列表</a>
+      <span class="muted small" id="progress"></span>
+    </div>
+
+    <h1 id="title">加载中…</h1>
+    <p class="muted small" id="meta"></p>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="center">
+        <button class="btn btn-primary btn-lg" id="play" type="button">播放这句</button>
+        <div class="row" style="justify-content:center;margin-top:14px;gap:16px;">
+          <label class="small muted checkbox-label">
+            <input type="checkbox" id="slow"> 慢速朗读
+          </label>
+          <label class="small muted checkbox-label">
+            <input type="checkbox" id="loop"> 循环播放
+          </label>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <label class="field-label" for="answer">写下你听到的内容</label>
+        <textarea
+          class="input"
+          id="answer"
+          rows="3"
+          placeholder="听到什么写什么，大小写和标点不用管"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+        ></textarea>
+
+        <div class="row-between" style="margin-top:10px;">
+          <span class="small muted" id="hint"></span>
+          <button class="btn btn-primary" id="submit" type="button">提交</button>
+        </div>
+      </div>
+
+      <div id="result"></div>
+    </div>
+
+    <div class="row-between" style="margin-top:16px;">
+      <button class="btn btn-sm" id="prev" type="button">上一句</button>
+      <button class="btn btn-sm" id="next" type="button">下一句</button>
+    </div>
+  </main>
+
+  <script type="module" src="/js/listen.js"></script>
+</body>
+</html>

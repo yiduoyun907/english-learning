@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录 · 英语学习</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <main class="container-narrow">
+    <h1 class="center">英语学习</h1>
+    <p class="center muted small" style="margin-top:-6px;margin-bottom:28px;">单词 · 听力 · 阅读 · AI 对话</p>
+
+    <div class="card">
+      <div class="row" style="margin-bottom:20px;">
+        <button class="btn btn-sm" id="tab-login" type="button">登录</button>
+        <button class="btn btn-sm" id="tab-register" type="button">注册</button>
+      </div>
+
+      <form id="auth-form">
+        <label class="field">
+          <span class="field-label">用户名</span>
+          <input class="input" id="username" autocomplete="username" required>
+        </label>
+
+        <label class="field">
+          <span class="field-label">密码</span>
+          <input class="input" id="password" type="password" autocomplete="current-password" required>
+        </label>
+
+        <p class="small muted" id="hint" style="min-height:20px;margin-top:-4px;"></p>
+
+        <button class="btn btn-primary btn-block" id="submit" type="submit">登录</button>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# 词库原始数据体积大，且已导入种子库，无需进入镜像
+data/ecdict.csv
+data/*.zip
+data/*.7z
+data/*.db-wal
+data/*.db-shm
+
+# 开发库含本地账号与学习记录，绝不进入镜像；镜像只使用 data/seed.db
+data/app.db
+data/app.db-*
+
+# 依赖与本地文件
+node_modules
+.git
+.gitignore
+.env
+.env.local
+*.log
+
+# 测试与文档
+tests
+README.md

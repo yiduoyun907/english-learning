@@ -1,0 +1,34 @@
+{
+  "name": "english-learning",
+  "version": "0.1.0",
+  "private": true,
+  "description": "英语学习平台 —— 单词记忆（间隔重复 SRS）、听力、阅读与 AI 对话，零 npm 依赖",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --use-system-ca --env-file-if-exists=.env server.js",
+    "dev": "node --use-system-ca --env-file-if-exists=.env --watch server.js",
+    "test": "node --test",
+    "test:invariants": "node tests/invariants.mjs",
+    "test:api": "node tests/api-smoke.mjs",
+    "test:content": "node tests/content-quality.mjs",
+    "test:all": "node --test && node tests/invariants.mjs && node tests/api-smoke.mjs && node tests/content-quality.mjs",
+    "import:ecdict": "node scripts/import-ecdict.js",
+    "import:voa": "node scripts/import-voa.js",
+    "import:cet": "node scripts/import-cet.js",
+    "export:passages": "node scripts/export-passages.js",
+    "build:seed": "node scripts/build-seed.js"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "keywords": [
+    "english-learning",
+    "srs",
+    "spaced-repetition",
+    "sm-2",
+    "sqlite",
+    "zero-dependency"
+  ],
+  "license": "MIT"
+}

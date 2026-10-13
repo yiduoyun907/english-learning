@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>对话 · 英语学习</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <main class="container">
+    <div class="row-between" style="margin-bottom:12px;">
+      <a class="btn btn-ghost btn-sm" href="/chat.html">返回</a>
+      <span class="muted small" id="scene-name"></span>
+    </div>
+
+    <div class="chat-log" id="chat-log"></div>
+
+    <div class="chat-composer">
+      <textarea
+        class="input"
+        id="chat-input"
+        rows="2"
+        placeholder="用英文回复，Enter 发送 / Shift+Enter 换行"
+        autocomplete="off"
+      ></textarea>
+
+      <div class="row" style="margin-top:8px;gap:8px;">
+        <button class="btn btn-sm" id="voice-btn" type="button">语音输入</button>
+        <span class="small muted" id="voice-status"></span>
+        <span style="flex:1;"></span>
+        <button class="btn btn-primary" id="send-btn" type="button">发送</button>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/js/chat-room.js"></script>
+</body>
+</html>

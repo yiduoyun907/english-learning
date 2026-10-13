@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>今日 · 英语学习</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <main class="container">
+    <h1 id="greeting">今日</h1>
+    <p class="muted" id="active-book"></p>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="row-between">
+        <div>
+          <h2 style="margin-bottom:2px;">今天的学习</h2>
+          <p class="muted small" style="margin:0;" id="plan-hint"></p>
+        </div>
+        <a class="btn btn-primary" href="/study.html">开始学习</a>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <div class="row-between">
+        <div>
+          <h2 style="margin-bottom:2px;">复习之前的单词</h2>
+          <p class="muted small" style="margin:0;" id="review-hint"></p>
+        </div>
+        <a class="btn" id="review-action" href="/quiz.html?scope=review">去复习</a>
+      </div>
+    </div>
+
+    <div class="stat-grid" style="margin-top:16px;">
+      <div class="stat">
+        <div class="stat-value" id="due">0</div>
+        <div class="stat-label">可复习</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="learned-today">0</div>
+        <div class="stat-label">今日新学</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="streak">0</div>
+        <div class="stat-label">连续打卡（天）</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">
+          <input class="stat-input" id="daily-limit" type="number" min="5" max="200" step="5" value="20"
+                 aria-label="每日学习单词数量">
+        </div>
+        <div class="stat-label">每日学习单词</div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/js/home.js"></script>
+</body>
+</html>

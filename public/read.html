@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>阅读 · 英语学习</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <main class="container">
+    <div class="row-between" style="margin-bottom:12px;">
+      <a class="btn btn-ghost btn-sm" href="/reading.html">返回列表</a>
+      <button class="btn btn-sm" id="speak-all" type="button">朗读全文</button>
+    </div>
+
+    <h1 id="title">加载中…</h1>
+    <p class="muted small" id="meta"></p>
+
+    <article class="passage" id="passage" style="margin-top:20px;"></article>
+
+    <div class="row-between" style="margin-top:28px;">
+      <span class="small muted" id="lookup-stat"></span>
+      <button class="btn btn-primary" id="complete" type="button">标记已读完</button>
+    </div>
+  </main>
+
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet-backdrop" data-close="1"></div>
+    <div class="sheet-panel">
+      <div class="row-between">
+        <div>
+          <strong id="sheet-word"></strong>
+          <span class="muted small" id="sheet-phonetic"></span>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="sheet-close" type="button">关闭</button>
+      </div>
+
+      <div id="sheet-body" style="margin-top:10px;"></div>
+
+      <div class="row" style="margin-top:14px;">
+        <button class="btn btn-sm" id="sheet-speak" type="button">发音</button>
+        <button class="btn btn-sm btn-primary" id="sheet-notebook" type="button">加入生词本</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/read.js"></script>
+</body>
+</html>

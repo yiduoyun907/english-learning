@@ -1,0 +1,16 @@
+# 词库原始数据 63MB，已导入 app.db，无需上传
+data/ecdict.csv
+data/*.zip
+data/*.7z
+data/*.db-wal
+data/*.db-shm
+
+node_modules
+.git
+.gitignore
+.env
+.env.local
+*.log
+
+tests
+README.md
