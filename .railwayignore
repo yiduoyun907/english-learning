@@ -6,6 +6,7 @@ data/*.db-wal
 data/*.db-shm
 
 node_modules
+dist
 .git
 .gitignore
 .env
@@ -13,4 +14,6 @@ node_modules
 *.log
 
 tests
+docs
+.playwright-mcp
 README.md

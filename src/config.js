@@ -24,7 +24,8 @@ export const config = {
       ? process.env.SEED_DB_PATH
       : resolve(projectRoot, process.env.SEED_DB_PATH)
     : null,
-  publicDir: join(projectRoot, 'public'),
+  // 前端由 Vite 构建到 dist/，运行阶段只服务产物目录
+  publicDir: join(projectRoot, 'dist'),
   /** session 有效期：30 天 */
   sessionTtlMs: 30 * 24 * 60 * 60 * 1000,
   isProduction: process.env.NODE_ENV === 'production',

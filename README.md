@@ -1,6 +1,6 @@
 # 英语学习平台
 
-自托管的英语学习网站：背单词、阅读、听力、AI 对话。后端零第三方依赖，克隆下来就能跑，数据全部存在自己的服务器上。
+自托管的英语学习网站：背单词、阅读、听力、AI 对话。后端运行时零第三方依赖，数据全部存在自己的服务器上；前端由 Vite 构建，安装依赖后即可运行。
 
 ## 功能
 
@@ -43,19 +43,27 @@
 
 ## 快速开始
 
-需要 Node.js 22.5 或更高版本（依赖内置的 `node:sqlite`）。
+需要 Node.js 22.12 或更高版本（依赖内置的 `node:sqlite`，Vite 8 也要求 22.12+）。
 
 ```bash
-# 1. 下载开源词库（约 63MB）
+# 1. 安装前端构建依赖
+npm install
+
+# 2. 下载开源词库（约 63MB）
 curl -L -o data/ecdict.csv \
   "https://ghfast.top/https://raw.githubusercontent.com/skywind3000/ECDICT/master/ecdict.csv"
 
-# 2. 导入词书
+# 3. 导入词书
 npm run import:ecdict
 
-# 3. 启动
+# 4. 构建前端
+npm run build
+
+# 5. 启动
 npm start
 ```
+
+开发时开两个终端：`npm run dev` 启动后端，`npm run dev:web` 启动 Vite（默认 5173，`/api` 自动代理到 3000）。
 
 打开 <http://localhost:3000>，注册账号后选择一本词书即可开始。
 
@@ -74,7 +82,7 @@ npm start
 
 ## 部署
 
-项目已容器化，可部署到任何支持 Docker 的平台（当前运行在 Railway）。
+项目已容器化，可部署到任何支持 Docker 的平台（当前运行在 Railway）。镜像内分两阶段：先安装依赖并运行 `vite build`，再把 `dist/` 复制进运行镜像，因此服务器上仍不需要 `node_modules`。
 
 ```bash
 npm run build:seed   # 生成部署用的种子库
@@ -93,10 +101,10 @@ railway up -y
 | HTTP 服务 | `node:http` 手写路由 |
 | 数据库 | `node:sqlite`，单文件 SQLite |
 | 密码与会话 | `node:crypto` scrypt + 服务端 session 表 |
-| 前端 | 原生 HTML / CSS / JS，无框架、无构建 |
+| 前端 | 原生 HTML / CSS / JS + Vue 3 共享组件，Vite 多页构建 |
 | 测试 | `node:test` |
 
-后端没有任何 npm 依赖——`package.json` 里没有 `dependencies` 字段。
+后端运行时没有任何 npm 依赖——`package.json` 的 `dependencies` 为空。Vite、Vue 只作为构建期 `devDependencies`，不会进入服务端运行镜像依赖。
 
 ## 内容来源
 

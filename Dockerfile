@@ -1,4 +1,16 @@
-# 零 npm 依赖，因此无需 npm install 步骤，镜像构建极快
+# 前端在构建阶段用 Vite 产出静态资源；运行阶段仍然不需要 node_modules
+FROM node:24-slim AS frontend-build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY vite.config.js ./
+COPY frontend ./frontend
+COPY public ./public
+RUN npm run build
+
 FROM node:24-slim
 
 WORKDIR /app
@@ -12,8 +24,9 @@ ENV NODE_ENV=production \
 COPY package.json ./
 COPY server.js ./
 COPY src ./src
-COPY public ./public
 COPY scripts ./scripts
+# 前端构建产物由构建阶段提供
+COPY --from=frontend-build /app/dist ./dist
 # 种子库由 npm run build:seed 生成，只含词库与文章，不含任何用户数据
 COPY data/seed.db ./seed.db
 

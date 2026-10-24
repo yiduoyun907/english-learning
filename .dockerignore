@@ -11,6 +11,7 @@ data/app.db-*
 
 # 依赖与本地文件
 node_modules
+dist
 .git
 .gitignore
 .env
@@ -19,4 +20,6 @@ node_modules
 
 # 测试与文档
 tests
+docs
+.playwright-mcp
 README.md

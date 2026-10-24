@@ -23,8 +23,9 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
-# Node
+# Node 与前端构建产物
 node_modules/
+dist/
 
 # 设计过程稿，仅本地保留
 docs/design/

@@ -6,6 +6,7 @@
  */
 import { api } from './api.js';
 import { esc, toast } from './ui.js';
+import { readSse } from '../src/lib/sse.js';
 
 /** 球的位置存储键 */
 const POS_KEY = 'el_tutor_orb_pos';
@@ -349,36 +350,3 @@ function renderMarkdown(text) {
     .join('');
 }
 
-/** 解析服务端推送的 SSE 事件流（与对话模块同一套协议） */
-async function readSse(response, handlers) {
-  const reader = response.body.getReader();
-  const decoder = new TextDecoder();
-  let buffer = '';
-
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-
-    buffer += decoder.decode(value, { stream: true });
-    const blocks = buffer.split('\n\n');
-    buffer = blocks.pop() || '';
-
-    for (const block of blocks) {
-      let event = 'message';
-      let data = '';
-
-      for (const line of block.split('\n')) {
-        if (line.startsWith('event:')) event = line.slice(6).trim();
-        else if (line.startsWith('data:')) data += line.slice(5).trim();
-      }
-      if (!data) continue;
-
-      try {
-        const payload = JSON.parse(data);
-        if (handlers[event]) handlers[event](payload);
-      } catch {
-        // 忽略无法解析的片段
-      }
-    }
-  }
-}

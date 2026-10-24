@@ -2,16 +2,20 @@
   "name": "english-learning",
   "version": "0.1.0",
   "private": true,
-  "description": "英语学习平台 —— 单词记忆（间隔重复 SRS）、听力、阅读与 AI 对话，零 npm 依赖",
+  "description": "英语学习平台 —— 单词记忆（间隔重复 SRS）、听力、阅读与 AI 对话；后端运行时零 npm 依赖，前端使用 Vite + Vue 构建",
   "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node --use-system-ca --env-file-if-exists=.env server.js",
     "dev": "node --use-system-ca --env-file-if-exists=.env --watch server.js",
+    "dev:web": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "node --test",
     "test:invariants": "node tests/invariants.mjs",
     "test:api": "node tests/api-smoke.mjs",
     "test:content": "node tests/content-quality.mjs",
+    "test:e2e": "node tests/e2e.mjs",
     "test:all": "node --test && node tests/invariants.mjs && node tests/api-smoke.mjs && node tests/content-quality.mjs",
     "import:ecdict": "node scripts/import-ecdict.js",
     "import:voa": "node scripts/import-voa.js",
@@ -20,7 +24,12 @@
     "build:seed": "node scripts/build-seed.js"
   },
   "engines": {
-    "node": ">=22.5"
+    "node": ">=22.12"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.10",
+    "vite": "^8.3.5",
+    "vue": "^3.5.44"
   },
   "keywords": [
     "english-learning",
@@ -28,7 +37,8 @@
     "spaced-repetition",
     "sm-2",
     "sqlite",
-    "zero-dependency"
+    "vite",
+    "vue"
   ],
   "license": "MIT"
 }
